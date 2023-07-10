@@ -29,15 +29,15 @@ class MethodChannelAppinioSocialShare extends AppinioSocialSharePlatform {
 
   @override
   Future<Map> getInstalledApps() async {
-    if (Platform.isIOS) return "Not implemented for iOS";
+    if (Platform.isIOS) return {"result": "Not implemented for iOS"};
     return await methodChannel.invokeMethod(installedApps);
   }
 
   @override
   Future<String> shareToTiktokStatus(String filePath) async {
     if (Platform.isIOS) return "Not implemented for iOS";
-    return ((await methodChannel.invokeMethod<String>(
-            tiktokStatus, {"imagePath": filePath, "message": ""})) ??
+    return ((await methodChannel
+            .invokeMethod<String>(tiktokStatus, {"imagePath": filePath, "message": ""})) ??
         "");
   }
 
@@ -45,82 +45,75 @@ class MethodChannelAppinioSocialShare extends AppinioSocialSharePlatform {
   Future<String> shareToTiktokPost(String videoFile) async {
     if (Platform.isIOS) return "Not implemented for iOS";
     if (Platform.isAndroid) return "Not implemented for android";
-    return ((await methodChannel
-            .invokeMethod<String>(tiktokPost, {"videoFile": videoFile})) ??
-        "");
+    return ((await methodChannel.invokeMethod<String>(tiktokPost, {"videoFile": videoFile})) ?? "");
   }
 
   @override
   Future<String> shareToTwitter(String message, {String? filePath}) async {
     if (Platform.isIOS) return "Not implemented for iOS";
-    return ((await methodChannel.invokeMethod<String>(
-            twitter, {"imagePath": filePath, "message": message})) ??
+    return ((await methodChannel
+            .invokeMethod<String>(twitter, {"imagePath": filePath, "message": message})) ??
         "");
   }
 
   @override
   Future<String> shareToTelegram(String message, {String? filePath}) async {
     if (Platform.isIOS) return "Not implemented for iOS";
-    return ((await methodChannel.invokeMethod<String>(
-            telegram, {"imagePath": filePath, "message": message})) ??
+    return ((await methodChannel
+            .invokeMethod<String>(telegram, {"imagePath": filePath, "message": message})) ??
         "");
   }
 
   @override
   Future<String> shareToWhatsapp(String message, {String? filePath}) async {
     if (Platform.isIOS) return "Not implemented for iOS";
-    return ((await methodChannel.invokeMethod<String>(
-            whatsapp, {"imagePath": filePath, "message": message})) ??
+    return ((await methodChannel
+            .invokeMethod<String>(whatsapp, {"imagePath": filePath, "message": message})) ??
         "");
   }
 
   @override
   Future<String> shareToSMS(String message, {String? filePath}) async {
     if (Platform.isIOS) return "Not implemented for iOS";
-    return ((await methodChannel.invokeMethod<String>(
-            sms, {"message": message, "imagePath": filePath})) ??
+    return ((await methodChannel
+            .invokeMethod<String>(sms, {"message": message, "imagePath": filePath})) ??
         "");
   }
 
   @override
   Future<String> copyToClipBoard(String message) async {
     if (Platform.isIOS) return "Not implemented for iOS";
-    return ((await methodChannel
-            .invokeMethod<String>(copyToClipboard, {"message": message})) ??
+    return ((await methodChannel.invokeMethod<String>(copyToClipboard, {"message": message})) ??
         "");
   }
 
   @override
-  Future<String> shareToSystem(String title, String message,
-      {String? filePath}) async {
-        if (Platform.isIOS) return "Not implemented for iOS";
-    return ((await methodChannel.invokeMethod<String>(systemShare,
-            {"message": message, "title": title, "imagePath": filePath})) ??
+  Future<String> shareToSystem(String title, String message, {String? filePath}) async {
+    if (Platform.isIOS) return "Not implemented for iOS";
+    return ((await methodChannel.invokeMethod<String>(
+            systemShare, {"message": message, "title": title, "imagePath": filePath})) ??
         "");
   }
 
   @override
   Future<String> shareToInstagramDirect(String message) async {
     if (Platform.isIOS) return "Not implemented for iOS";
-    return ((await methodChannel
-            .invokeMethod<String>(instagramDirect, {"message": message})) ??
+    return ((await methodChannel.invokeMethod<String>(instagramDirect, {"message": message})) ??
         "");
   }
 
   @override
   Future<String> shareToInstagramFeed(String filePath) async {
     if (Platform.isIOS) return "Not implemented for iOS";
-    return ((await methodChannel.invokeMethod<String>(
-            instagramFeed, {"imagePath": filePath, "message": ""})) ??
+    return ((await methodChannel
+            .invokeMethod<String>(instagramFeed, {"imagePath": filePath, "message": ""})) ??
         "");
   }
 
   @override
   Future<String> shareToMessenger(String message) async {
     if (Platform.isIOS) return "Not implemented for iOS";
-    return ((await methodChannel
-            .invokeMethod<String>(messenger, {"message": message})) ??
-        "");
+    return ((await methodChannel.invokeMethod<String>(messenger, {"message": message})) ?? "");
   }
 
   @override
@@ -131,11 +124,10 @@ class MethodChannelAppinioSocialShare extends AppinioSocialSharePlatform {
       String? backgroundTopColor,
       String? backgroundBottomColor,
       String? attributionURL}) async {
+    if (Platform.isIOS) return "Not implemented for iOS";
     return ((await methodChannel.invokeMethod<String>(instagramStories, {
-      if (Platform.isIOS) return "Not implemented for iOS";
           "stickerImage": stickerImage,
-          "backgroundImage":
-              backgroundImage ?? (Platform.isAndroid ? backgroundVideo : null),
+          "backgroundImage": backgroundImage ?? (Platform.isAndroid ? backgroundVideo : null),
           "videoFile": backgroundVideo,
           "backgroundTopColor": backgroundTopColor,
           "backgroundBottomColor": backgroundBottomColor,
@@ -153,11 +145,10 @@ class MethodChannelAppinioSocialShare extends AppinioSocialSharePlatform {
       String? backgroundTopColor,
       String? backgroundBottomColor,
       String? attributionURL}) async {
+    if (Platform.isIOS) return "Not implemented for iOS";
     return ((await methodChannel.invokeMethod<String>(facebookStories, {
-      if (Platform.isIOS) return "Not implemented for iOS";
           "stickerImage": stickerImage,
-          "backgroundImage":
-              backgroundImage ?? (Platform.isAndroid ? backgroundVideo : null),
+          "backgroundImage": backgroundImage ?? (Platform.isAndroid ? backgroundVideo : null),
           "videoFile": backgroundVideo,
           "backgroundTopColor": backgroundTopColor,
           "backgroundBottomColor": backgroundBottomColor,
@@ -170,8 +161,8 @@ class MethodChannelAppinioSocialShare extends AppinioSocialSharePlatform {
   @override
   Future<String> shareToFacebook(String hashtag, String filePath) async {
     if (Platform.isIOS) return "Not implemented for iOS";
-    return ((await methodChannel.invokeMethod<String>(
-            facebook, {"imagePath": filePath, "message": hashtag})) ??
+    return ((await methodChannel
+            .invokeMethod<String>(facebook, {"imagePath": filePath, "message": hashtag})) ??
         "");
   }
 }
